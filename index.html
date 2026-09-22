@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LeadPredictor</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="brand-row">
+          <div class="brand-mark" aria-hidden="true">
+            <span class="brand-mark__triangle"></span>
+          </div>
+          <h1>Lead<span>Predictor</span></h1>
+        </div>
+
+        <label class="field">
+          <span>Language</span>
+          <div class="input-wrap select-wrap">
+            <span class="flag" aria-hidden="true">🇺🇸</span>
+            <select aria-label="Language">
+              <option selected>English</option>
+            </select>
+            <span class="caret" aria-hidden="true">⌄</span>
+          </div>
+        </label>
+
+        <label class="field">
+          <span>Currency</span>
+          <div class="input-wrap select-wrap">
+            <span class="currency-symbol" aria-hidden="true">$</span>
+            <select aria-label="Currency">
+              <option selected>US Dollar</option>
+            </select>
+            <span class="caret" aria-hidden="true">⌄</span>
+          </div>
+        </label>
+
+        <label class="field">
+          <span>Campaign Start</span>
+          <div class="input-wrap date-wrap">
+            <input type="date" value="2026-05-08" aria-label="Campaign Start" />
+            <span class="calendar-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h2v2h6V2h2v2h3a2 2 0 0 1 2 2v13a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h3V2Zm12 8H5v9h14v-9ZM5 8h14V6H5v2Z"/></svg>
+            </span>
+          </div>
+        </label>
+
+        <label class="field">
+          <span>Campaign End</span>
+          <div class="input-wrap date-wrap">
+            <input type="date" value="2026-11-04" aria-label="Campaign End" />
+            <span class="calendar-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h2v2h6V2h2v2h3a2 2 0 0 1 2 2v13a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h3V2Zm12 8H5v9h14v-9ZM5 8h14V6H5v2Z"/></svg>
+            </span>
+          </div>
+        </label>
+
+        <label class="field">
+          <span>Total Revenue</span>
+          <div class="input-wrap money-wrap">
+            <span class="prefix" aria-hidden="true">$</span>
+            <input type="number" value="10000" min="0" id="totalRevenue" />
+          </div>
+        </label>
+
+        <label class="field">
+          <span>Avg. Order Value</span>
+          <div class="input-wrap money-wrap">
+            <span class="prefix" aria-hidden="true">$</span>
+            <input type="number" value="1000" min="0" id="avgOrderValue" />
+          </div>
+        </label>
+      </aside>
+
+      <main class="content">
+        <section class="chart-panel">
+          <div class="chart-grid">
+            <div class="chart-axis">
+              <span>2</span>
+              <span>3</span>
+              <span>4</span>
+              <span>5</span>
+              <span>6</span>
+            </div>
+            <div class="bars" aria-label="campaign chart">
+              <div class="bar-group" data-month="2">
+                <div class="bar bar-prospects"></div>
+                <div class="bar bar-leads"></div>
+                <div class="bar bar-customers"></div>
+              </div>
+              <div class="bar-group" data-month="3">
+                <div class="bar bar-prospects"></div>
+                <div class="bar bar-leads"></div>
+                <div class="bar bar-customers"></div>
+              </div>
+              <div class="bar-group" data-month="4">
+                <div class="bar bar-prospects"></div>
+                <div class="bar bar-leads"></div>
+                <div class="bar bar-customers"></div>
+              </div>
+              <div class="bar-group" data-month="5">
+                <div class="bar bar-prospects"></div>
+                <div class="bar bar-leads"></div>
+                <div class="bar bar-customers"></div>
+              </div>
+              <div class="bar-group" data-month="6">
+                <div class="bar bar-prospects"></div>
+                <div class="bar bar-leads"></div>
+                <div class="bar bar-customers"></div>
+              </div>
+            </div>
+            <div class="chart-tooltip">
+              <span>Month #3</span>
+              <span>Prospects: 63</span>
+              <span>Leads: 13</span>
+              <span>Customers: 5</span>
+            </div>
+          </div>
+        </section>
+
+        <aside class="stats-panel">
+          <div class="stat-card stat-card--prospects">
+            <div class="stat-head">
+              <span class="stat-icon icon-prospects" aria-hidden="true"></span>
+              <span>Prospects</span>
+              <span class="stat-percent">100%</span>
+            </div>
+            <div class="stat-number" id="prospectsValue">125</div>
+            <div class="progress"><span id="prospectsProgress"></span></div>
+          </div>
+
+          <div class="stat-card stat-card--leads">
+            <div class="stat-head">
+              <span class="stat-icon icon-leads" aria-hidden="true"></span>
+              <span>Leads</span>
+              <span class="stat-percent" id="leadsPercentLabel">20%</span>
+            </div>
+            <div class="stat-number" id="leadsValue">25</div>
+            <div class="progress"><span id="leadsProgress"></span></div>
+          </div>
+
+          <div class="stat-card stat-card--customers">
+            <div class="stat-head">
+              <span class="stat-icon icon-customers" aria-hidden="true"></span>
+              <span>Customers</span>
+              <span class="stat-percent" id="customersPercentLabel">8%</span>
+            </div>
+            <div class="stat-number" id="customersValue">10</div>
+            <div class="progress"><span id="customersProgress"></span></div>
+          </div>
+        </aside>
+
+        <section class="sliders-panel">
+          <div class="slider-row">
+            <label for="leadRate">Lead Response Rate</label>
+            <span id="leadRateValue">40.00%</span>
+          </div>
+          <input id="leadRate" type="range" min="1" max="100" value="40" />
+
+          <div class="slider-row">
+            <label for="prospectRate">Prospect Response Rate</label>
+            <span id="prospectRateValue">20.00%</span>
+          </div>
+          <input id="prospectRate" type="range" min="1" max="100" value="20" />
+        </section>
+      </main>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
